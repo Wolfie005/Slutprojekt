@@ -97,6 +97,13 @@ class Level:
                                       self.add_exp)
 
     def create_magic(self, style, strength, cost):
+        """
+        Creates magic sprites
+        :param style:
+        :param strength:
+        :param cost:
+        :return:
+        """
 
         if style == 'heal':
             self.magic_player.heal(self.player, strength, cost, [self.visible_sprites])

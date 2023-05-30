@@ -36,7 +36,12 @@ class Level:
         self.magic_player = MagicPlayer(self.animation_player)
 
     def create_map(self):
-        """ Creates two dictionarys one with csv files and one with tiles  """
+        """
+        Creates two dictionarys one with csv files and one with tiles och setter ut tre olika delar av mappen genom
+        att lägga ut tiles där csv filen säger att dem ska läggas den visar vart dem ska vara genom att använda id
+        som man får av Tiled programmet. Id är platsen i deras tilesets när man importar dem in i Tiled. Sedan
+        placerar jag ut playern och enemies.
+         """
 
         layouts = {
             'border': import_csv_layout('./maps csv and png/tutorial_logic tiles.csv'),
@@ -118,14 +123,17 @@ class Level:
             self.magic_player.shuriken(self.player, cost, [self.visible_sprites, self.attack_sprites])
 
     def create_attack(self):
+        """ Creates attacks """
         self.current_attack = Weapon(self.player, [self.visible_sprites, self.attack_sprites])
 
     def destroy_attack(self):
+        """ Destroys attacks """
         if self.current_attack:
             self.current_attack.kill()
         self.current_attack = None
 
     def player_attack_logic(self):
+        """ Skappar logic för hur andra sprites reagerar när playern attackerar dem """
         if self.attack_sprites:
             for attack_sprite in self.attack_sprites:
                 collision_sprites = pygame.sprite.spritecollide(attack_sprite, self.attackable_sprites, False)

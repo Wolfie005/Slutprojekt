@@ -37,10 +37,10 @@ class Level:
 
     def create_map(self):
         """
-        Creates two dictionarys one with csv files and one with tiles och setter ut tre olika delar av mappen genom
-        att lägga ut tiles där csv filen säger att dem ska läggas den visar vart dem ska vara genom att använda id
-        som man får av Tiled programmet. Id är platsen i deras tilesets när man importar dem in i Tiled. Sedan
-        placerar jag ut playern och enemies.
+        Creates two dictionarys one with csv files that is then used to place the different tiles
+        enemys and the player, for example the tiles in the other dictionary which contains flower
+         tiles. It gets the TILESIZE to see were to place the different tiles and objects.
+
          """
 
         layouts = {
@@ -107,7 +107,8 @@ class Level:
         :param style:
         :param strength:
         :param cost:
-        :return:
+        :Returns:
+                None
         """
 
         if style == 'heal':
@@ -133,7 +134,7 @@ class Level:
         self.current_attack = None
 
     def player_attack_logic(self):
-        """ Skappar logic för hur andra sprites reagerar när playern attackerar dem """
+        """ creates the logic for how the different sprites react to being hit by the player """
         if self.attack_sprites:
             for attack_sprite in self.attack_sprites:
                 collision_sprites = pygame.sprite.spritecollide(attack_sprite, self.attackable_sprites, False)

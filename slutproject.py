@@ -10,7 +10,6 @@ html = requests.get(
     "https://weather.com/sv-SE/weather/today/l/f3b52a01b39da4a06d727feb1ee331178ebbc665753e313efa71b4c057c7b68d")
 soup = BeautifulSoup(html.content, 'html.parser')
 deg = soup.find("span", {"data-testid": "TemperatureValue"})
-print(deg.text)
 
 game_state = 'start'
 
@@ -41,7 +40,8 @@ class Game:
         such as quitting the game or key presses, and updates the game state accordingly. The
         function also updates the screen with the current game state and displays any necessary
         elements. If the game state changes to 'blackjack', it switches to the Blackjack game,
-        plays a round, and then switches back to the main game state.
+        plays a round then asks the player if it wants to play again, and then switches back to
+        the main game state if the player says no.
 
         Args:
             self: The instance of the Game class.
